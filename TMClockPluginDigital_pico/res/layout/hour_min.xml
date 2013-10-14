@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tomoon="http://tomoon.cn"
+  android:orientation="horizontal"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content">
+  
+<cn.tomoon.clock.plugin.ScaleableView android:id="@+id/hour1"
+				tomoon:rotateDegrees="0.0"
+    	        tomoon:scale="0.45"
+    	        tomoon:background="@drawable/green_dark_8"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginRight="-6dip" android:layout_marginLeft="-5dip"/>
+<cn.tomoon.clock.plugin.ScaleableView android:id="@+id/hour2"
+				tomoon:rotateDegrees="0.0"
+    	        tomoon:scale="0.45"
+    	        tomoon:background="@drawable/green8"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginRight="-9dip" android:layout_marginLeft="-7dip"/>
+<cn.tomoon.clock.plugin.ScaleableView android:id="@+id/bigdot"
+				tomoon:rotateDegrees="0.0"
+    	        tomoon:scale="0.45"
+    	        tomoon:background="@drawable/greendot"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="-15dip" android:layout_marginRight="-15dip"/>
+<cn.tomoon.clock.plugin.ScaleableView android:id="@+id/minute1"
+				tomoon:rotateDegrees="0.0"
+    	        tomoon:scale="0.45"
+    	        tomoon:background="@drawable/green0"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="-9dip" android:layout_marginRight="-6dip"/>
+<cn.tomoon.clock.plugin.ScaleableView android:id="@+id/minute2"
+				tomoon:rotateDegrees="0.0"
+    	        tomoon:scale="0.45"
+    	        tomoon:background="@drawable/green0"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:layout_marginRight="-1dip" android:layout_marginLeft="-6dip"/>
+  
+</LinearLayout>

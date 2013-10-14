@@ -1,0 +1,100 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tomoon="http://tomoon.cn"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity" >
+
+
+    <LinearLayout
+        android:id="@+id/timeDeskDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical" >
+<!-- 
+        <LinearLayout
+            android:id="@+id/nextAlarm_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+            <cn.tomoon.clock.plugin.ScaleableView
+                android:id="@+id/nextAlarm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dip"
+                tomoon:background="@drawable/green_ring_light"
+                tomoon:rotateDegrees="0.0"
+                tomoon:scale="1.0" />
+        </LinearLayout>
+ -->
+        <LinearLayout
+            android:id="@+id/timeLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical" >
+
+            <!--  -->
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <include
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    layout="@layout/hour_min" />
+<!-- 
+                <LinearLayout
+                    android:id="@+id/am_sec"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="6dip"
+                    android:layout_marginLeft="-10dip"
+                    android:orientation="vertical"
+                    android:visibility="visible" >
+
+                    <include
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dip"
+                        android:layout_marginLeft="13dip"
+                        android:layout_weight="1"
+                        layout="@layout/am_pm" />
+
+                    <include
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        layout="@layout/sec" />
+                </LinearLayout>
+                 -->
+            </LinearLayout>
+        </LinearLayout>
+<!-- 
+        <LinearLayout
+            android:id="@+id/weekdays_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingTop="7dip" >
+
+
+            <include
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                layout="@layout/weekdays" />
+        </LinearLayout>
+         -->
+    </LinearLayout>
+
+</RelativeLayout>

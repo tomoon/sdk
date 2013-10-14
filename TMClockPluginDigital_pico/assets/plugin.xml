@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 插件提供的功能(类) -->
+<plugin-features>
+	<!-- 描述类，这个是自定义的 -->
+	<description name="com.tomoon.test.clock4.PlugDescription"/>
+	
+	<intent action="cn.tomoon.clock.plugin.MainActivity" key="main">数字时钟</intent>
+
+</plugin-features>

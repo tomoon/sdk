@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tomoon="http://tomoon.cn"
+  android:id="@+id/am_pm"
+  android:orientation="horizontal"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content">
+  
+  <cn.tomoon.clock.plugin.ScaleableView android:id="@+id/am"
+				tomoon:rotateDegrees="0.0"
+    	        tomoon:scale="0.6"
+    	        tomoon:background="@drawable/greenam_dark"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"/>
+				
+<cn.tomoon.clock.plugin.ScaleableView android:id="@+id/pm"
+				tomoon:rotateDegrees="0.0"
+    	        tomoon:scale="0.6"
+    	        tomoon:background="@drawable/greenpm_dark"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"/>
+</LinearLayout>
