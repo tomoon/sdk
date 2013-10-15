@@ -9,13 +9,15 @@ import android.content.Context;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.tomoon.sdk.Emulator;
 import com.tomoon.sdk.TMWatchReceiver;
 import com.tomoon.sdk.TMWatchSender;
+import com.tomoon.watch.utils.TMLog;
 
 public class WeatherActivity extends Activity {
-	
+
 	private TextView mWeather;
-	
+
 	private TMWatchReceiver mTMWatchReceiver;
 
 	@Override
@@ -23,18 +25,19 @@ public class WeatherActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.weather_activity_layout);
 		init();
+		Emulator.configure(getWindow());
+
 		mTMWatchReceiver = new TMWatchReceiver() {
 
 			@Override
-			protected void onPebbleRequest(Context ctx, int transId,
+			protected void onPebbleData(Context ctx, int transId,
 					String jsonData) {
-				// TODO Auto-generated method stub
-				super.onPebbleRequest(ctx, transId, jsonData);
+				super.onPebbleData(ctx, transId, jsonData);
 				/**
-				 * pebbleÊÖ»úapp·¢ËÍ¸øÊÖ±íµÄÌìÆøÊý¾Ý¸ñÊ½
+				 * pebbleï¿½Ö»ï¿½appï¿½ï¿½ï¿½Í¸ï¿½ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¸ï¿½Ê½
 				 * [
 				 *    {"value":0,"length":1,"type":"uint","key":0},
-				 *    {"value":"17¡ãC","length":0,"type":"string","key":1}
+				 *    {"value":"17ï¿½ï¿½C","length":0,"type":"string","key":1}
 				 * ]
 				 */
 				JSONArray data;
@@ -51,18 +54,17 @@ public class WeatherActivity extends Activity {
 		};
 		TMWatchSender.registerReceiver(this, mTMWatchReceiver);
 	}
-	
+
 	private void init() {
-		mWeather = (TextView)findViewById(R.id.weather);
+		mWeather = (TextView) findViewById(R.id.weather);
 	}
 
 	@Override
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onDestroy();
+		TMLog.LOGD("unregiste weather receiver");
 		unregisterReceiver(mTMWatchReceiver);
 	}
-	
-	
 
 }

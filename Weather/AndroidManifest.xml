@@ -11,8 +11,7 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:label="@string/app_name" >
         <activity
             android:name="com.tomoon.weather.WeatherActivity"
             android:label="@string/app_name" >
@@ -22,11 +21,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
-        <meta-data android:name="pebble-uuid" 
-            	   android:value="42c86ea4-1c3e-4a07-b889-2cccca914198" />
-        <meta-data android:name="is_tomoon_app" 
-                   android:value="true" />
+
+        <meta-data
+            android:name="pebble-uuid"
+            android:value="42c86ea4-1c3e-4a07-b889-2cccca914198" />
+        <meta-data
+            android:name="is_tomoon_app"
+            android:value="true" />
     </application>
 
 </manifest>
