@@ -2,11 +2,11 @@ package com.tomoon.weather;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.view.Window;
 import android.widget.TextView;
 
 import com.tomoon.sdk.Emulator;
@@ -23,10 +23,10 @@ public class WeatherActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.weather_activity_layout);
 		init();
 		Emulator.configure(getWindow());
-
 		mTMWatchReceiver = new TMWatchReceiver() {
 
 			@Override
@@ -34,7 +34,7 @@ public class WeatherActivity extends Activity {
 					String jsonData) {
 				super.onPebbleData(ctx, transId, jsonData);
 				/**
-				 * pebble�ֻ�app���͸��ֱ��������ݸ�ʽ
+				 * data structure watch received from pebble app
 				 * [
 				 *    {"value":0,"length":1,"type":"uint","key":0},
 				 *    {"value":"17��C","length":0,"type":"string","key":1}
