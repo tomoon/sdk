@@ -1,11 +1,12 @@
 package com.tomoon.sample;
 
-import com.tomoon.sdk.Emulator;
-
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.widget.TextView;
+
+import com.tomoon.sdk.TMPhoneSender;
 
 public class MainActivity extends BaseActivity {
 
@@ -29,6 +30,7 @@ public class MainActivity extends BaseActivity {
 		mTextView = new TextView(this);
 		setContentView(mTextView);
 		onMessage();
+		Log.d("zzw", TMPhoneSender.class.getName());
 		SampleReceiver.setHandler(mHandler);
 	}
 

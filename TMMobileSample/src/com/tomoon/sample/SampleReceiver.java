@@ -6,14 +6,11 @@ import java.util.Map;
 import org.json.JSONObject;
 
 import android.os.Handler;
-import android.os.Message;
-import android.util.Log;
 
-import com.tomoon.sdk.TMMobileReceiver;
-import com.tomoon.sdk.TMMobileSender;
-import com.tomoon.sdk.TMWatchConstant;
+import com.tomoon.sdk.TMPhoneReceiver;
+import com.tomoon.sdk.TMPhoneSender;
 
-public class SampleReceiver extends TMMobileReceiver {
+public class SampleReceiver extends TMPhoneReceiver {
 	private static Handler sHandler;
 	public static int sReceiverCount = 0;
 
@@ -44,7 +41,8 @@ public class SampleReceiver extends TMMobileReceiver {
 				return;
 			}
 			count--;
-			TMMobileSender.sendAppResponse(TheApp.sInst, senderPkg, null);
+
+			TMPhoneSender.sendAppResponse(TheApp.sInst, senderPkg, null);
 			mHandler.postDelayed(this, 1000);
 		}
 	}

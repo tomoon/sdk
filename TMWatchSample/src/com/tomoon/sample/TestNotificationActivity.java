@@ -56,7 +56,7 @@ public class TestNotificationActivity extends BaseActivity {
 			mTVResult.setText("通知: " + mNoficationCnt);
 			mNoficationCnt++;
 		} else {
-			mTVResult.setText("无法发送通知！ ");
+			mTVResult.setText("无法发送通知！ 手机程序可能未安装");
 
 		}
 

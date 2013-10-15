@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.tomoon.sample.mobile"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="18" />
+
+    <application
+        android:name="com.tomoon.sample.TheApp"
+        android:allowBackup="true"
+        android:label="土曼手机端测试程序" >
+        <activity
+            android:name="com.tomoon.sample.MainActivity"
+            android:label="土曼手机端测试程序"
+            android:theme="@android:style/Theme.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <receiver android:name="com.tomoon.sample.SampleReceiver" >
+            <intent-filter>
+                <action android:name="com.tomoon.sample.mobile.request" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

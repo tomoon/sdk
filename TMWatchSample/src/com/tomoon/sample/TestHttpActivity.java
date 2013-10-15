@@ -2,7 +2,6 @@ package com.tomoon.sample;
 
 import org.json.JSONObject;
 
-import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -10,6 +9,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
+import com.tomoon.sdk.R;
 import com.tomoon.sdk.TMWatchConstant;
 import com.tomoon.sdk.TMWatchSender;
 
