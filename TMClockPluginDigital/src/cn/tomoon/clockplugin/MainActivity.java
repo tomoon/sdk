@@ -12,9 +12,11 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity {
 	
-	public static TextView hourTextView;
+	public static TextView hour1TextView;
 	public static TextView dotTextView;
-	public static TextView minTextView;
+	public static TextView min1TextView;
+	public static TextView hour2TextView;
+	public static TextView min2TextView;
 	protected static boolean CLOCK_START = true;
 	public static Calendar mCalendar;
 
@@ -24,13 +26,17 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		Typeface fontFace = Typeface.createFromAsset(getAssets(),
-                "fonts/radioland.ttf");
-		hourTextView = (TextView)findViewById(R.id.hourTextView);
+                "fonts/Clockopia.ttf");
+		hour1TextView = (TextView)findViewById(R.id.hour1TextView);
+		hour2TextView = (TextView)findViewById(R.id.hour2TextView);
 		dotTextView = (TextView)findViewById(R.id.dotTextView);
-		minTextView = (TextView)findViewById(R.id.minTextView);
-		hourTextView.setTypeface(fontFace);
+		min1TextView = (TextView)findViewById(R.id.min1TextView);
+		min2TextView = (TextView)findViewById(R.id.min2TextView);
+		hour1TextView.setTypeface(fontFace);
+		hour2TextView.setTypeface(fontFace);
 		dotTextView.setTypeface(fontFace);
-		minTextView.setTypeface(fontFace);
+		min1TextView.setTypeface(fontFace);
+		min2TextView.setTypeface(fontFace);
 		dotTextView.setText(":");
 	}
 	private static Handler mDisplayHandler = new Handler();
@@ -58,16 +64,20 @@ public class MainActivity extends Activity {
   	  	int mHour = mCalendar.get(Calendar.HOUR_OF_DAY);
 	  	int mMinute = mCalendar.get(Calendar.MINUTE);
 	  	int mSecond = mCalendar.get(Calendar.SECOND);
-	  	String hourStr = mHour > 9 ? "" + mHour : "0" + mHour;
-	  	String minStr = mMinute > 9 ? "" + mMinute : "0" + mMinute;
+	  	int H1, H2, M1, M2;
+	  	H2 = mHour/10;
+	  	H1 = mHour%10;
+	  	M2 = mMinute/10;
+	  	M1 = mMinute%10;
 	  	if (mSecond % 2 == 0) {
 	  		dotTextView.setVisibility(View.INVISIBLE);
 		} else {
 	  		dotTextView.setVisibility(View.VISIBLE);
 		}
-	  	hourTextView.setText(hourStr);
-	  	minTextView.setText(minStr);
-	  	
+	  	hour1TextView.setText(H1+"");
+	  	hour2TextView.setText(H2+"");
+	  	min1TextView.setText(M1+"");
+	  	min2TextView.setText(M2+"");
 	}
 
 

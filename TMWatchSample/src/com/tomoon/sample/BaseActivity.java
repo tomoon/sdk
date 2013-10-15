@@ -12,6 +12,6 @@ public class BaseActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// 调整为手表屏幕大小
 		super.onCreate(savedInstanceState);
-		Emulator.configureWindow(getWindow());
+		Emulator.configure(getWindow());
 	}
 }
