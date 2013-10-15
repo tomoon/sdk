@@ -1,4 +1,4 @@
-package com.tomoon.sample;
+package com.tomoon.sample.watch;
 
 import org.json.JSONObject;
 
@@ -19,6 +19,9 @@ public class SampleReceiver extends TMWatchReceiver {
 	@Override
 	protected void onHttpResponse(Context ctx, JSONObject json) {
 		// 发回给Activity
+		if (json == null || mHandler == null) {
+			return;
+		}
 		Message msg = mHandler.obtainMessage();
 		msg.obj = json;
 		mHandler.sendMessage(msg);
@@ -26,6 +29,9 @@ public class SampleReceiver extends TMWatchReceiver {
 
 	@Override
 	protected void onAppResponse(Context ctx, int status, JSONObject json) {
+		if (mHandler == null) {
+			return;
+		}
 		mHandler.sendEmptyMessage(status);
 	}
 

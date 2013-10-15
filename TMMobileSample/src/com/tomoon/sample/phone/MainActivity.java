@@ -1,4 +1,4 @@
-package com.tomoon.sample;
+package com.tomoon.sample.phone;
 
 import android.os.Bundle;
 import android.os.Handler;

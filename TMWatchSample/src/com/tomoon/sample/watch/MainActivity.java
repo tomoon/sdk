@@ -1,4 +1,4 @@
-package com.tomoon.sample;
+package com.tomoon.sample.watch;
 
 import android.content.Intent;
 import android.os.Bundle;

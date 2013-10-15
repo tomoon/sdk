@@ -1,4 +1,4 @@
-package com.tomoon.sample;
+package com.tomoon.sample.phone;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package com.tomoon.sample;
+package com.tomoon.sample.watch;
 
 import org.json.JSONObject;
 
@@ -9,9 +9,10 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
-import com.tomoon.sdk.R;
 import com.tomoon.sdk.TMWatchConstant;
 import com.tomoon.sdk.TMWatchSender;
+import com.tomoon.watch.sample.R;
+import com.tomoon.watch.utils.TMLog;
 
 public class TestHttpActivity extends BaseActivity implements
 		View.OnClickListener {
@@ -37,6 +38,10 @@ public class TestHttpActivity extends BaseActivity implements
 			@Override
 			public void handleMessage(Message msg) {
 				JSONObject json = (JSONObject) msg.obj;
+				if (json == null) {
+					TMLog.LOGD("got bad http");
+					return;
+				}
 				mBtnWeather.setEnabled(true);
 				TextView tv = mTVResult;
 				try {

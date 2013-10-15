@@ -1,4 +1,4 @@
-package com.tomoon.sample;
+package com.tomoon.sample.watch;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -48,7 +48,7 @@ public class TestNotificationActivity extends BaseActivity {
 			e.printStackTrace();
 			return;
 		}
-		TMWatchSender.sendAppRequest(this, "com.tomoon.sample.mobile", json);
+		TMWatchSender.sendAppRequest(this, "com.tomoon.sample.phone", json);
 	}
 
 	private void onNotification(boolean ok) {
