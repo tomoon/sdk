@@ -3,7 +3,6 @@ package cn.tomoon.clockplugin;
 
 import java.util.Calendar;
 
-import android.R.integer;
 import android.app.Activity;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -27,7 +26,7 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		Typeface fontFace = Typeface.createFromAsset(getAssets(),
-                "fonts/radioland.ttf");
+                "fonts/Clockopia.ttf");
 		hour1TextView = (TextView)findViewById(R.id.hour1TextView);
 		hour2TextView = (TextView)findViewById(R.id.hour2TextView);
 		dotTextView = (TextView)findViewById(R.id.dotTextView);
