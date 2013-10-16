@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.tomoon.watch.sample"
+    package="com.tomoon.weather"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -10,24 +10,21 @@
 
     <application
         android:allowBackup="true"
-        android:label="土曼手表测试程序" >
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name" >
         <activity
-            android:name="com.tomoon.sample.watch.MainActivity"
-            android:label="土曼手表测试程序"
-            android:theme="@android:style/Theme.NoTitleBar" >
+            android:name="com.tomoon.weather.WeatherActivity"
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.tomoon.sample.watch.TestHttpActivity"
-            android:theme="@android:style/Theme.NoTitleBar" />
-        <activity
-            android:name="com.tomoon.sample.watch.TestNotificationActivity"
-            android:theme="@android:style/Theme.NoTitleBar" />
 
+        <meta-data
+            android:name="pebble-uuid"
+            android:value="42c86ea4-1c3e-4a07-b889-2cccca914198" />
         <meta-data
             android:name="is_tomoon_app"
             android:value="true" />

@@ -26,9 +26,13 @@ public final class R {
         /**  
     <dimen name="time_text_size">55sp</dimen>
     <dimen name="time_dot_width">22dp</dimen>
+<<<<<<< HEAD
     <dimen name="time_text_width">40dp</dimen>
     <color name="time_text_color">#00FF00</color>
      
+=======
+    <dimen name="time_text_width">40dp</dimen> 
+>>>>>>> 459b18130962c05ab9114732e438d3b49bc8c3e1
          */
         public static final int time_text_size=0x7f040002;
         public static final int time_text_width=0x7f040004;
