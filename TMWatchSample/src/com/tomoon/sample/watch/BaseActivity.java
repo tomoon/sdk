@@ -4,7 +4,6 @@ import com.tomoon.sdk.Emulator;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.WindowManager;
 
 public class BaseActivity extends Activity {
 
