@@ -5,6 +5,11 @@ import java.util.Map;
 
 import org.json.JSONObject;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Handler;
 
 import com.tomoon.sdk.TMPhoneReceiver;
@@ -54,6 +59,24 @@ public class SampleReceiver extends TMPhoneReceiver {
 		if (sHandler != null) {
 			sHandler.sendEmptyMessage(0);
 		}
+
+		Notification noti = new Notification();
+		noti.defaults = 0;
+		noti.flags = Notification.FLAG_AUTO_CANCEL;
+		noti.icon = android.R.drawable.ic_dialog_alert;
+		noti.tickerText = "收到手表请求！";
+		Intent i = new Intent(TheApp.sInst, MainActivity.class);
+		i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
+				| Intent.FLAG_ACTIVITY_NEW_TASK);
+		PendingIntent contentIntent = PendingIntent.getActivity(TheApp.sInst,
+				android.R.string.ok, i, PendingIntent.FLAG_UPDATE_CURRENT);
+		noti.setLatestEventInfo(TheApp.sInst, "", noti.tickerText,
+				contentIntent);
+		NotificationManager nm = (NotificationManager) TheApp.sInst
+				.getSystemService(Context.NOTIFICATION_SERVICE);
+		nm.notify(0, noti);
+
+		// 是否持续发送通知？
 		boolean sendNotification = json.optBoolean("sendNotification", false);
 		if (!sendNotification) {
 			return;
