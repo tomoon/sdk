@@ -23,6 +23,13 @@ public final class R {
         public static final int activity_horizontal_margin=0x7f040000;
         public static final int activity_vertical_margin=0x7f040001;
         public static final int time_dot_width=0x7f040003;
+        /**  
+    <dimen name="time_text_size">55sp</dimen>
+    <dimen name="time_dot_width">22dp</dimen>
+    <dimen name="time_text_width">40dp</dimen>
+    <color name="time_text_color">#00FF00</color>
+     
+         */
         public static final int time_text_size=0x7f040002;
         public static final int time_text_width=0x7f040004;
     }
