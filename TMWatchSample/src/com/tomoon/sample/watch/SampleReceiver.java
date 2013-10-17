@@ -6,7 +6,6 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
 
-import com.tomoon.sdk.TMWatchConstant;
 import com.tomoon.sdk.TMWatchReceiver;
 
 public class SampleReceiver extends TMWatchReceiver {
@@ -17,13 +16,14 @@ public class SampleReceiver extends TMWatchReceiver {
 	}
 
 	@Override
-	protected void onHttpResponse(Context ctx, JSONObject json) {
+	protected void onHttpResponse(Context ctx,int status, JSONObject json) {
 		// 发回给Activity
 		if (json == null || mHandler == null) {
 			return;
 		}
 		Message msg = mHandler.obtainMessage();
 		msg.obj = json;
+		msg.what = status;
 		mHandler.sendMessage(msg);
 	}
 
