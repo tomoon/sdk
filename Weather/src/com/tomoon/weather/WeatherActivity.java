@@ -2,7 +2,6 @@ package com.tomoon.weather;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Context;
@@ -12,7 +11,6 @@ import android.widget.TextView;
 import com.tomoon.sdk.Emulator;
 import com.tomoon.sdk.TMWatchReceiver;
 import com.tomoon.sdk.TMWatchSender;
-import com.tomoon.watch.utils.TMLog;
 
 public class WeatherActivity extends Activity {
 
@@ -34,17 +32,16 @@ public class WeatherActivity extends Activity {
 					String jsonData) {
 				super.onPebbleData(ctx, transId, jsonData);
 				/**
-				 * pebble�ֻ�app���͸��ֱ��������ݸ�ʽ
+				 * weather data sent from pebble watch
 				 * [
 				 *    {"value":0,"length":1,"type":"uint","key":0},
-				 *    {"value":"17��C","length":0,"type":"string","key":1}
+				 *    {"value":"17C","length":0,"type":"string","key":1}
 				 * ]
 				 */
 				JSONArray data;
 				try {
 					data = new JSONArray(jsonData);
 				} catch (JSONException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 					return;
 				}
@@ -61,10 +58,8 @@ public class WeatherActivity extends Activity {
 
 	@Override
 	protected void onDestroy() {
-		// TODO Auto-generated method stub
-		super.onDestroy();
-		TMLog.LOGD("unregiste weather receiver");
 		unregisterReceiver(mTMWatchReceiver);
+		super.onDestroy();
 	}
 
 }
