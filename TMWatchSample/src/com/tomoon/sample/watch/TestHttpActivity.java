@@ -42,6 +42,7 @@ public class TestHttpActivity extends BaseActivity implements
 					TMLog.LOGD("got bad http");
 					return;
 				}
+				int result = msg.what;
 				mBtnWeather.setEnabled(true);
 				TextView tv = mTVResult;
 				try {
@@ -49,12 +50,12 @@ public class TestHttpActivity extends BaseActivity implements
 					if (!MainActivity.sWeatherURL.equals(url)) {
 						return;
 					}
-					int result = json.getInt("httpResult");
-					if (result == TMWatchConstant.REQ_HTTP_BAD_URL) {
+					
+					if (result == TMWatchConstant.STATUS_HTTP_BAD_URL) {
 						tv.setText("地址错误: " + url);
-					} else if (result == TMWatchConstant.REQ_HTTP_NET_ERR) {
+					} else if (result == TMWatchConstant.STATUS_HTTP_NET_ERR) {
 						tv.setText("网络错误");
-					} else if (result != TMWatchConstant.REQ_OK) {
+					} else if (result != TMWatchConstant.STATUS_OK) {
 						tv.setText("未知错误");
 					} else { // ok
 						String ret = json.optString("httpRetString", null);

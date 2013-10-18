@@ -28,9 +28,9 @@ public class WeatherActivity extends Activity {
 		mTMWatchReceiver = new TMWatchReceiver() {
 
 			@Override
-			protected void onPebbleData(Context ctx, int transId,
+			protected void onPebbleData(Context ctx,int status, int transId,
 					String jsonData) {
-				super.onPebbleData(ctx, transId, jsonData);
+				super.onPebbleData(ctx,status, transId, jsonData);
 				/**
 				 * weather data sent from pebble watch
 				 * [

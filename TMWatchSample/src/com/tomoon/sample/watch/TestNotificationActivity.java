@@ -3,7 +3,6 @@ package com.tomoon.sample.watch;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -31,7 +30,7 @@ public class TestNotificationActivity extends BaseActivity {
 			public void handleMessage(Message msg) {
 
 				// 接收到通知消息
-				if (msg.what != TMWatchConstant.REQ_OK) {
+				if (msg.what != TMWatchConstant.STATUS_OK) {
 					onNotification(false);
 				} else {
 					onNotification(true);
