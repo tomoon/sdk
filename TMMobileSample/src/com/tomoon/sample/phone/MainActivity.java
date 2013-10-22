@@ -26,6 +26,7 @@ import com.tomoon.watch.utils.TMLog;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
+	public static final boolean isTomoonAppInstalled;
 	private TextView mTextView;
 	private Handler mHandler = new Handler() {
 
@@ -49,6 +50,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
 		setContentView(R.layout.main_activity);
 		mTextView = (TextView) findViewById(R.id.tv_req);
+		isTomoonAppInstalled = isTomoonAppInstalled();
 		onMessage();
 		SampleReceiver.setHandler(mHandler);
 
@@ -158,5 +160,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
 		TMLog.LOGD("About to send a modal alert to Pebble: " + notificationData);
 		sendBroadcast(i);
+	}
+	
+	//check if tomoon App is installed
+	public boolean isTomoonAppInstalled() {
+		List<PackageInfo> packages = getPackageManager().getInstalledPackages(0);
+		for(int i=0; i<packages.size(); i++) {
+			if(packages.get(i).packageName.contains("com.tomoon.launcher"))
+				return true;
+		}
+		return false;	
 	}
 }
