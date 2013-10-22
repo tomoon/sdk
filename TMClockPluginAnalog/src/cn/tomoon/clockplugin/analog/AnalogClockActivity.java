@@ -2,29 +2,21 @@ package cn.tomoon.clockplugin.analog;
 
 import java.util.Calendar;
 
-import com.tomoon.sdk.Emulator;
-
 import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.util.Log;
-import android.view.View;
-import android.widget.RelativeLayout;
-import cn.tomoon.clockplugin.analog.widget.HandImageView;
+import cn.tomoon.clockplugin.analog.widget.LongHandImageView;
+
+import com.tomoon.sdk.Emulator;
 
 public class AnalogClockActivity extends Activity {
 
-	public static int mRotateCenterX = 120; // 120 * 1.325;
-	public static int mRotateCenterY = 160; // 160 * 1.325;
 	private boolean ClockRunning = true;
 	private GetRunHandTask mGetRunHandTask;
 	
-	private HandImageView mHourHandImageView;
-	private HandImageView mMinHandImageView;
-	private HandImageView mSecHandImageView;
+	private LongHandImageView mHourLongHandImageView;
+	private LongHandImageView mMinLongHandImageView;
+	private LongHandImageView mSecLongHandImageView;
 	int secAngle=0;
 	int lastSecAngle;
 	int hourAngle=0;
@@ -39,13 +31,13 @@ public class AnalogClockActivity extends Activity {
 		setContentView(R.layout.activity_analog_clock);
 		Emulator.configure(getWindow());
 //		RelativeLayout contentView = (RelativeLayout)findViewById(R.id.contentView);
-        mMinHandImageView = (HandImageView)findViewById(R.id.min_hand);
-        mSecHandImageView = (HandImageView)findViewById(R.id.sec_hand);
-        mHourHandImageView = (HandImageView)findViewById(R.id.hour_hand);
+        mMinLongHandImageView = (LongHandImageView)findViewById(R.id.min_hand);
+        mSecLongHandImageView = (LongHandImageView)findViewById(R.id.sec_hand);
+        mHourLongHandImageView = (LongHandImageView)findViewById(R.id.hour_hand);
 	}
-	
 	@Override
 	protected void onResume() {
+		// TODO Auto-generated method stub
 		super.onResume();
 		mGetRunHandTask =new GetRunHandTask();
 		ClockRunning=true;
@@ -75,13 +67,13 @@ public class AnalogClockActivity extends Activity {
 			hourAngle = mCalendar.get(Calendar.HOUR) * 30+minAngle/12;
 //			secAngle = (secAngle > 348 ? 0 : secAngle + 6);
 			if (secAngle!=lastSecAngle) {
-				mSecHandImageView.PostRotateHanderWithAngle(secAngle);
+				mSecLongHandImageView.PostRotateHanderWithAngle(secAngle);
 				lastSecAngle=secAngle;
 //				Log.i("jike@ secAngle " + secAngle);
 			}
 			if (lastMinAngle!=minAngle) {
-				mHourHandImageView.PostRotateHanderWithAngle(hourAngle);
-				mMinHandImageView.PostRotateHanderWithAngle(minAngle);
+				mHourLongHandImageView.PostRotateHanderWithAngle(hourAngle);
+				mMinLongHandImageView.PostRotateHanderWithAngle(minAngle);
 				lastMinAngle=minAngle;
 			}
 			try {

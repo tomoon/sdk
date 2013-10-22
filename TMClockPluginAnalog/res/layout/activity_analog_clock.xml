@@ -10,31 +10,45 @@
     android:background="#00000000"
     android:id="@+id/contentView"
     tools:context=".AnalogClockActivity" >
-
-    <cn.tomoon.clockplugin.analog.widget.HandImageView
+    <cn.tomoon.clockplugin.analog.widget.LongHandImageView
+        android:id="@+id/clock_background"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        handsrc:myhandsrc="@drawable/tm_default_background"
+        />
+    <cn.tomoon.clockplugin.analog.widget.LongHandImageView
         android:id="@+id/hour_hand"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        handsrc:myhandsrc="@drawable/tm_hour_hand_s"
+        handsrc:myhandsrc="@drawable/tm_default_hour"
         />
-    <cn.tomoon.clockplugin.analog.widget.HandImageView
+    <cn.tomoon.clockplugin.analog.widget.LongHandImageView
         android:id="@+id/min_hand"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        handsrc:myhandsrc="@drawable/tm_min_hand_s"
+        handsrc:myhandsrc="@drawable/tm_default_min"
         />
-
-    <cn.tomoon.clockplugin.analog.widget.HandImageView
+    <cn.tomoon.clockplugin.analog.widget.LongHandImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        handsrc:myhandsrc="@drawable/tm_center_point" 
+        />
+    <cn.tomoon.clockplugin.analog.widget.LongHandImageView
         android:id="@+id/sec_hand"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        handsrc:myhandsrc="@drawable/tm_sec_hand_s" 
+        handsrc:myhandsrc="@drawable/tm_default_sec" 
         />
+    
 
 </RelativeLayout>
