@@ -11,9 +11,12 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.tomoon.sdk.TMPhoneReceiver;
 import com.tomoon.sdk.TMPhoneSender;
+import com.tomoon.sdk.TMWatchConstant;
 
 public class SampleReceiver extends TMPhoneReceiver {
 	private static Handler sHandler;
@@ -47,17 +50,23 @@ public class SampleReceiver extends TMPhoneReceiver {
 			}
 			count--;
 
-			TMPhoneSender.sendAppResponse(TheApp.sInst, senderPkg, null);
+			TMPhoneSender.sendAppResponse(TheApp.sInst, senderPkg, 10, null);
 			mHandler.postDelayed(this, 1000);
 		}
 	}
 
 	@Override
-	protected void onAppRequest(String senderPackage, JSONObject json) {
+	protected void onAppRequest(String senderPackage, int transId,
+			JSONObject json) {
+
 		sReceiverCount++;
-		//Log.d("tomoon", "received request: " + sReceiverCount);
 		if (sHandler != null) {
 			sHandler.sendEmptyMessage(0);
+		}
+
+		if (10 != transId) {
+			Log.w("sample", "Got bad trnasation: " + transId);
+			return;
 		}
 
 		Notification noti = new Notification();

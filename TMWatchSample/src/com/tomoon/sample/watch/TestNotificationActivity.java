@@ -47,7 +47,7 @@ public class TestNotificationActivity extends BaseActivity {
 			e.printStackTrace();
 			return;
 		}
-		TMWatchSender.sendAppRequest(this, "com.tomoon.sample.phone", json);
+		TMWatchSender.sendAppRequest(this, 10, "com.tomoon.sample.phone", json);
 	}
 
 	private void onNotification(boolean ok) {

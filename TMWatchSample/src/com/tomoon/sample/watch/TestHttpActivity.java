@@ -50,7 +50,7 @@ public class TestHttpActivity extends BaseActivity implements
 					if (!MainActivity.sWeatherURL.equals(url)) {
 						return;
 					}
-					
+
 					if (result == TMWatchConstant.STATUS_HTTP_BAD_URL) {
 						tv.setText("地址错误: " + url);
 					} else if (result == TMWatchConstant.STATUS_HTTP_NET_ERR) {
@@ -87,7 +87,7 @@ public class TestHttpActivity extends BaseActivity implements
 		mBtnWeather.setEnabled(false);
 		mTVResult.setText(null);
 		// 发送请求
-		TMWatchSender.sendHttpRequest(this, MainActivity.sWeatherURL);
+		TMWatchSender.sendHttpRequest(this, 10, MainActivity.sWeatherURL);
 	}
 
 }
