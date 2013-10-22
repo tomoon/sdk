@@ -1,15 +1,15 @@
 package cn.tomoon.clockplugin.analog.widget;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import cn.tomoon.clockplugin.analog.R;
 
-public class HandImageView extends View {
+public class LongHandImageView extends View {
 	/**
 	 * author Kun Wang
 	 * 2012-3-23 15:29:27
@@ -30,11 +30,12 @@ public class HandImageView extends View {
 	int DrawableWidth;
 	int DrawableHeight;
 	
-	public HandImageView(Context context, AttributeSet attrs) {
+	public LongHandImageView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		// TODO Auto-generated constructor stub
 		initail(context,attrs);
 	}
+	@SuppressLint("Recycle")
 	private void initail(Context context, AttributeSet attrs) {
 		// TODO Auto-generated method stub
 		TypedArray mTypedArray = context.obtainStyledAttributes(attrs,
@@ -49,7 +50,7 @@ public class HandImageView extends View {
 	
 	private void GetDrawableSize() {
 		mBoundsLeft = centerX-DrawableWidth/2;
-		mBoundsTop=centerY-DrawableHeight;
+		mBoundsTop=centerY-DrawableHeight/2;
 		mBoundsRight=centerX+DrawableWidth/2;
 		mBoundsBottom=centerY+DrawableHeight/2;
 //		Log.d("tomoon", (mBoundsLeft+","+mBoundsTop+","+mBoundsRight+","+mBoundsBottom));
@@ -69,7 +70,7 @@ public class HandImageView extends View {
 		super.onDraw(canvas);
 		GetDrawableSize();
 		canvas.rotate(mRotateDegrees, centerX, centerY);
-		handDrawable.setBounds(mBoundsLeft, mBoundsTop, mBoundsRight, centerY);
+		handDrawable.setBounds(mBoundsLeft, mBoundsTop, mBoundsRight, mBoundsBottom);
 		handDrawable.draw(canvas);
 	}
 	
