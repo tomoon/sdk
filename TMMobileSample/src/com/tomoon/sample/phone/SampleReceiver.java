@@ -49,8 +49,9 @@ public class SampleReceiver extends TMPhoneReceiver {
 				return;
 			}
 			count--;
-
-			TMPhoneSender.sendAppResponse(TheApp.sInst, senderPkg, 10, null);
+			
+			if(MainActivity.isTomoonAppInstalled)
+				TMPhoneSender.sendAppResponse(TheApp.sInst, senderPkg, 10, null);
 			mHandler.postDelayed(this, 1000);
 		}
 	}
