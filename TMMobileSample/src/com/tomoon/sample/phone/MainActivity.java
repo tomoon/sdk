@@ -67,7 +67,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 						Toast.LENGTH_SHORT).show();
 				UUID uuid = UUID
 						.fromString("ee4d768c-84c7-4352-8e4f-eef31194b182");
-
+				// PebbleKit.sendNackToPebble 不能带uuid
 				TMPhoneSender.sendNackToPebble(context, uuid, transactionId);
 			}
 		};
@@ -79,7 +79,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 						Toast.LENGTH_SHORT).show();
 				UUID uuid = UUID
 						.fromString("ee4d768c-84c7-4352-8e4f-eef31194b182");
-
+				// PebbleKit.sendAckToPebble 不能带uuid
 				TMPhoneSender.sendAckToPebble(context, uuid, transactionId);
 			}
 		};
