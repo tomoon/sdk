@@ -8,10 +8,11 @@ import android.os.Message;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.tomoon.sdk.TMWatchConstant;
 import com.tomoon.sdk.TMWatchReceiver;
 
 public class SampleReceiver extends TMWatchReceiver {
+	
+
 	private Handler mHandler;
 
 	public SampleReceiver(Handler h) {

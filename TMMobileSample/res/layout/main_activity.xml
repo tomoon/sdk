@@ -31,4 +31,28 @@
         android:layout_centerHorizontal="true"
         android:text="test pebble notify" />
 
+    <Button
+        android:id="@+id/btn_pebble_data"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="test pebble data" />
+    
+    <!-- 
+
+    <Button
+        android:id="@+id/btn_pebble_ack"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="test pebble ack" />
+
+    <Button
+        android:id="@+id/btn_pebble_nack"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="test pebble nack" />
+         -->
+
 </LinearLayout>

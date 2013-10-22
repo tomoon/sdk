@@ -31,7 +31,7 @@
 
         <meta-data
             android:name="pebble-uuid"
-            android:value="ee4d768c84c743528e4feef31194b183" />
+            android:value="ee4d768c-84c7-4352-8e4f-eef31194b183" />
     </application>
 
 </manifest>
