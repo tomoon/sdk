@@ -1,6 +1,7 @@
 package com.tomoon.sample.phone;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -9,6 +10,7 @@ import org.json.JSONObject;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -26,7 +28,7 @@ import com.tomoon.watch.utils.TMLog;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
-	public static final boolean isTomoonAppInstalled;
+	//public static final boolean isTomoonAppInstalled = false;
 	private TextView mTextView;
 	private Handler mHandler = new Handler() {
 
@@ -50,7 +52,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
 		setContentView(R.layout.main_activity);
 		mTextView = (TextView) findViewById(R.id.tv_req);
-		isTomoonAppInstalled = isTomoonAppInstalled();
+		//isTomoonAppInstalled = isTomoonAppInstalled();
 		onMessage();
 		SampleReceiver.setHandler(mHandler);
 
