@@ -50,6 +50,7 @@ public class SampleReceiver extends TMPhoneReceiver {
 			}
 			count--;
 
+			//if(MainActivity.isTomoonAppInstalled)
 			TMPhoneSender.sendAppResponse(TheApp.sInst, senderPkg, 10, null);
 			mHandler.postDelayed(this, 1000);
 		}

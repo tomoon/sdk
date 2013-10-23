@@ -32,6 +32,11 @@
         <meta-data
             android:name="is_tomoon_app"
             android:value="true" />
+        
+        <meta-data
+            android:name="pebble-uuid"
+            android:value="ee4d768c-84c7-4352-8e4f-eef31194b182" />
+   
     </application>
 
 </manifest>

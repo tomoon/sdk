@@ -1,6 +1,7 @@
 package com.tomoon.sample.phone;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -9,17 +10,15 @@ import org.json.JSONObject;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.SimpleAdapter.ViewBinder;
 import android.widget.Toast;
 
 import com.tomoon.sdk.TMPhoneSender;
-import com.tomoon.sdk.TMWatchConstant;
 import com.tomoon.sdk.pebble.PebbleDictionary;
 import com.tomoon.sdk.pebble.PebbleKit;
 import com.tomoon.sdk.pebble.PebbleKit.PebbleAckReceiver;
@@ -29,6 +28,7 @@ import com.tomoon.watch.utils.TMLog;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
+	//public static final boolean isTomoonAppInstalled = false;
 	private TextView mTextView;
 	private Handler mHandler = new Handler() {
 
@@ -52,12 +52,16 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
 		setContentView(R.layout.main_activity);
 		mTextView = (TextView) findViewById(R.id.tv_req);
+		//isTomoonAppInstalled = isTomoonAppInstalled();
 		onMessage();
 		SampleReceiver.setHandler(mHandler);
 
+		// 测试手机向手表发送pebble信息
 		findViewById(R.id.btn_pebble_music).setOnClickListener(this);
 		findViewById(R.id.btn_pebble_noti).setOnClickListener(this);
+		findViewById(R.id.btn_pebble_data).setOnClickListener(this);
 
+		// 手机接受手表的pebble信息
 		UUID uuid = UUID.fromString("ee4d768c-84c7-4352-8e4f-eef31194b183");
 		mPebbleAckRecv = new PebbleAckReceiver(uuid) {
 
@@ -65,7 +69,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 			public void receiveAck(Context context, int transactionId) {
 				Toast.makeText(MainActivity.this, "pebble ack",
 						Toast.LENGTH_SHORT).show();
-
+				UUID uuid = UUID
+						.fromString("ee4d768c-84c7-4352-8e4f-eef31194b182");
+				// PebbleKit.sendNackToPebble 不能带uuid
+				TMPhoneSender.sendNackToPebble(context, uuid, transactionId);
 			}
 		};
 		mPebbleNackRecv = new PebbleNackReceiver(uuid) {
@@ -74,6 +81,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 			public void receiveNack(Context context, int transactionId) {
 				Toast.makeText(MainActivity.this, "pebble nack",
 						Toast.LENGTH_SHORT).show();
+				UUID uuid = UUID
+						.fromString("ee4d768c-84c7-4352-8e4f-eef31194b182");
+				// PebbleKit.sendAckToPebble 不能带uuid
+				TMPhoneSender.sendAckToPebble(context, uuid, transactionId);
 			}
 		};
 		mPebbleDataRecv = new PebbleDataReceiver(uuid) {
@@ -110,6 +121,17 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 			sendMusicUpdateToPebble();
 		} else if (R.id.btn_pebble_noti == id) {
 			sendAlertToPebble();
+		} else if (R.id.btn_pebble_data == id) {
+			UUID uuid = UUID.fromString("ee4d768c-84c7-4352-8e4f-eef31194b182");
+			PebbleDictionary pd = new PebbleDictionary();
+			pd.addString(10, "data");
+			PebbleKit.sendDataToPebble(this, uuid, pd);
+		} else if (R.id.btn_pebble_data == id) {
+
+		} else if (R.id.btn_pebble_data == id) {
+			UUID uuid = UUID.fromString("ee4d768c-84c7-4352-8e4f-eef31194b182");
+
+			PebbleKit.sendNackToPebble(this, -1);
 		}
 	}
 
@@ -140,5 +162,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
 		TMLog.LOGD("About to send a modal alert to Pebble: " + notificationData);
 		sendBroadcast(i);
+	}
+	
+	//check if tomoon App is installed
+	public boolean isTomoonAppInstalled() {
+		List<PackageInfo> packages = getPackageManager().getInstalledPackages(0);
+		for(int i=0; i<packages.size(); i++) {
+			if(packages.get(i).packageName.contains("com.tomoon.launcher"))
+				return true;
+		}
+		return false;	
 	}
 }

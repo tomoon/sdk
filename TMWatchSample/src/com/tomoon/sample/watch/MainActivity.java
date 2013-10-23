@@ -1,13 +1,8 @@
 package com.tomoon.sample.watch;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -16,10 +11,11 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.tomoon.sdk.TMWatchReceiver;
 import com.tomoon.sdk.TMWatchSender;
 import com.tomoon.sdk.pebble.PebbleDictionary;
-import com.tomoon.watch.utils.TMLog;
 
 public class MainActivity extends BaseActivity {
 
@@ -42,9 +38,30 @@ public class MainActivity extends BaseActivity {
 
 	};
 
+	// 接收pebble消息
+	private TMWatchReceiver mReceiver = new TMWatchReceiver() {
+		@Override
+		protected void onPebbleData(Context ctx, int status, int transId,
+				String data) {
+			Toast.makeText(ctx, "pebble data " + (data == null ? "" : data),
+					Toast.LENGTH_SHORT).show();
+		}
+
+		@Override
+		protected void onPebbleAck(Context ctx, int status, int transId) {
+			Toast.makeText(ctx, "pebble ack ", Toast.LENGTH_SHORT).show();
+		}
+
+		@Override
+		protected void onPebbleNack(Context ctx, int status, int transId) {
+			Toast.makeText(ctx, "pebble nack", Toast.LENGTH_SHORT).show();
+		}
+	};
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		TMWatchSender.registerReceiver(this, mReceiver);
 
 		ListView lv = new ListView(this);
 		lv.setBackgroundColor(0x88000000);
@@ -93,16 +110,16 @@ public class MainActivity extends BaseActivity {
 					PebbleDictionary pd = new PebbleDictionary();
 					pd.addString(100, "value");
 					TMWatchSender.sendPebbleMessage(MainActivity.this, uuid,
-							-1, pd);
+							100, pd);
 
 				} else if (arg2 == 3) { // pebble ack
 					UUID uuid = UUID
 							.fromString("ee4d768c-84c7-4352-8e4f-eef31194b183");
-					TMWatchSender.sendPebbleAck(MainActivity.this, uuid, -1);
+					TMWatchSender.sendPebbleAck(MainActivity.this, uuid, 100);
 				} else if (arg2 == 4) { // pebble nack
 					UUID uuid = UUID
 							.fromString("ee4d768c-84c7-4352-8e4f-eef31194b183");
-					TMWatchSender.sendPebbleNack(MainActivity.this, uuid, -1);
+					TMWatchSender.sendPebbleNack(MainActivity.this, uuid, 100);
 				} else {
 					Intent i = new Intent();
 					i.setClass(MainActivity.this, sTestClasses[arg2]);
@@ -117,6 +134,7 @@ public class MainActivity extends BaseActivity {
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
+		unregisterReceiver(mReceiver);
 	}
 
 }
