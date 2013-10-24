@@ -12,19 +12,22 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity {
 	
-	public static TextView hour1TextView;
-	public static TextView dotTextView;
-	public static TextView min1TextView;
-	public static TextView hour2TextView;
-	public static TextView min2TextView;
-	protected static boolean CLOCK_START = true;
-	public static Calendar mCalendar;
-
+	private TextView hour1TextView;
+	private TextView dotTextView;
+	private TextView min1TextView;
+	private TextView hour2TextView;
+	private TextView min2TextView;
+	private Calendar mCalendar;
+	
+	private int HAND_REFRESH_VALUE = 1000;
+	private boolean isShowSec = true;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		HAND_REFRESH_VALUE = isShowSec ? HAND_REFRESH_VALUE
+				: HAND_REFRESH_VALUE * 60;
 		Typeface fontFace = Typeface.createFromAsset(getAssets(),
                 "fonts/Clockopia.ttf");
 		hour1TextView = (TextView)findViewById(R.id.hour1TextView);
@@ -39,13 +42,13 @@ public class MainActivity extends Activity {
 		min2TextView.setTypeface(fontFace);
 		dotTextView.setText(":");
 	}
-	private static Handler mDisplayHandler = new Handler();
-	private static Runnable mDisplayRunnable = new Runnable() {
+	
+	private Handler mDisplayHandler = new Handler();
+	private Runnable mDisplayRunnable = new Runnable() {
 		@Override
 		public void run() {
-			setTimeView();
-			if(CLOCK_START )
-				mDisplayHandler.postDelayed(mDisplayRunnable,1000);
+			setTimeView(isShowSec);
+			mDisplayHandler.postDelayed(mDisplayRunnable, HAND_REFRESH_VALUE);
 		}
 	};
 
@@ -53,10 +56,25 @@ public class MainActivity extends Activity {
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-		mDisplayHandler.post(mDisplayRunnable);
+		firstShowTime(isShowSec);
+	}
+	
+	private void firstShowTime(boolean isShowSec) {
+		setTimeView(isShowSec);
+		if (isShowSec) {
+			mDisplayHandler.removeCallbacks(mDisplayRunnable);
+			mDisplayHandler.post(mDisplayRunnable);
+			return;
+		}
+		mDisplayHandler.removeCallbacks(mDisplayRunnable);
+		Calendar mCalendar = Calendar.getInstance();
+		mCalendar.setTimeInMillis(System.currentTimeMillis());
+		long first_delay_time = (60 - mCalendar.get(Calendar.SECOND)) * 1000;
+		first_delay_time = first_delay_time != 60 * 1000 ? first_delay_time : 0;
+		mDisplayHandler.postDelayed(mDisplayRunnable, first_delay_time);
 	}
 
-	protected static void setTimeView() {
+	private void setTimeView(boolean isShowSec) {
 		// TODO Auto-generated method stub
 		long time = System.currentTimeMillis();
 		mCalendar = Calendar.getInstance();
@@ -69,7 +87,7 @@ public class MainActivity extends Activity {
 	  	H1 = mHour%10;
 	  	M2 = mMinute/10;
 	  	M1 = mMinute%10;
-	  	if (mSecond % 2 == 0) {
+	  	if (isShowSec && mSecond % 2 == 0) {
 	  		dotTextView.setVisibility(View.INVISIBLE);
 		} else {
 	  		dotTextView.setVisibility(View.VISIBLE);
@@ -79,6 +97,5 @@ public class MainActivity extends Activity {
 	  	min1TextView.setText(M1+"");
 	  	min2TextView.setText(M2+"");
 	}
-
-
+	
 }
