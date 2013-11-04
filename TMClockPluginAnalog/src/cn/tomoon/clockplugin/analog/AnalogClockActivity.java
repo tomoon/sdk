@@ -20,7 +20,7 @@ public class AnalogClockActivity extends Activity {
 	private int minAngle = 0;
 	private int lastMinAngle;
 	private int HAND_REFRESH_VALUE = 1000;
-	private boolean isShowSec = true;
+	private boolean isShowSec = false;
 	private Runnable mRunnable;
 	private Handler mHandler;
 
