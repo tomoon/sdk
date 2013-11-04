@@ -9,9 +9,9 @@
     <dimen name="time_text_width">40dp</dimen>
     <color name="time_text_color">#00FF00</color>
      -->
-    <dimen name="time_text_size">65sp</dimen>
+    <dimen name="time_text_size">85sp</dimen>
     <dimen name="time_dot_width">20dp</dimen>
-    <dimen name="time_text_width">40dp</dimen>
+    <dimen name="time_text_width">50dp</dimen>
     <color name="time_text_color">#000000</color>
 
 </resources>
