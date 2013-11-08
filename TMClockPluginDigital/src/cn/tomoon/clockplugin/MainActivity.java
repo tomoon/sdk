@@ -41,6 +41,7 @@ public class MainActivity extends Activity {
 		min1TextView.setTypeface(fontFace);
 		min2TextView.setTypeface(fontFace);
 		dotTextView.setText(":");
+		firstShowTime(isShowSec);
 	}
 	
 	private Handler mDisplayHandler = new Handler();

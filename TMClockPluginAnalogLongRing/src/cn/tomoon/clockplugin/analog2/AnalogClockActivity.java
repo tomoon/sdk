@@ -42,6 +42,7 @@ public class AnalogClockActivity extends Activity {
 			}
 		};
 		mHandler = new Handler();
+		firstShowTime(isShowSec);
 	}
 
 	@Override
