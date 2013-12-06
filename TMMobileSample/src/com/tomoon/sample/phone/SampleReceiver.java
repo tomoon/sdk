@@ -12,11 +12,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.tomoon.sdk.TMPhoneReceiver;
 import com.tomoon.sdk.TMPhoneSender;
-import com.tomoon.sdk.TMWatchConstant;
 
 public class SampleReceiver extends TMPhoneReceiver {
 	private static Handler sHandler;
