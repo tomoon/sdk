@@ -5,8 +5,6 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.os.Handler;
-import android.text.AlteredCharSequence;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -14,7 +12,7 @@ import android.widget.Toast;
 
 import com.tomoon.sdk.Emulator;
 
-public class MainActivity extends Activity {
+public class EmulatorSizeActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +23,7 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View view) {
 				AlertDialog.Builder builder = new AlertDialog.Builder(
-						MainActivity.this);
+						EmulatorSizeActivity.this);
 				final Dialog dlg = builder
 						.setTitle(R.string.app_name)
 						.setPositiveButton("OK",
@@ -49,7 +47,7 @@ public class MainActivity extends Activity {
 
 			@Override
 			public void onClick(View view) {
-				Toast toast = Toast.makeText(MainActivity.this,
+				Toast toast = Toast.makeText(EmulatorSizeActivity.this,
 						"Toast!", Toast.LENGTH_SHORT);
 				toast.show();
 			}
