@@ -56,7 +56,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 		onMessage();
 		SampleReceiver.setHandler(mHandler);
 
-		// 测试手机向手表发送pebble信息
+		// test sending msg from phone
 		findViewById(R.id.btn_pebble_music).setOnClickListener(this);
 		findViewById(R.id.btn_pebble_noti).setOnClickListener(this);
 		findViewById(R.id.btn_pebble_data).setOnClickListener(this);
