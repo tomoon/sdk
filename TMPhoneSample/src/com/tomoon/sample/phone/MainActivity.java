@@ -40,7 +40,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 	};
 
 	private void onMessage() {
-		mTextView.setText("get " + SampleReceiver.sReceiverCount + " requests");
+		mTextView.setText(String.format(getResources().getString(R.string.get_requests), SampleReceiver.sReceiverCount));
 	}
 
 	private PebbleAckReceiver mPebbleAckRecv;
@@ -54,7 +54,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 		setContentView(R.layout.main_activity);
 		mTextView = (TextView) findViewById(R.id.tv_req);
 		if (!isTomoonAppInstalled()) {
-			Toast.makeText(MainActivity.this, "please download Tomoon app from tomoon.cn",
+			Toast.makeText(MainActivity.this, getResources().getString(R.string.please_download_tomoon_app),
 					Toast.LENGTH_SHORT).show();
 			finish();
 			return;
@@ -71,7 +71,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
 			@Override
 			public void receiveAck(Context context, int transactionId) {
-				Toast.makeText(MainActivity.this, "ack from watch",
+				Toast.makeText(MainActivity.this, getResources().getString(R.string.phone_received_pebble_ack),
 						Toast.LENGTH_SHORT).show();
 				UUID uuid = UUID
 						.fromString("ee4d768c-84c7-4352-8e4f-eef31194b182");
@@ -82,7 +82,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
 			@Override
 			public void receiveNack(Context context, int transactionId) {
-				Toast.makeText(MainActivity.this, "pebble nack",
+				Toast.makeText(MainActivity.this, getResources().getString(R.string.phone_received_pebble_nack),
 						Toast.LENGTH_SHORT).show();
 				UUID uuid = UUID
 						.fromString("ee4d768c-84c7-4352-8e4f-eef31194b182");

@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.tomoon.sdk.TMWatchReceiver;
 import com.tomoon.sdk.TMWatchSender;
 import com.tomoon.sdk.pebble.PebbleDictionary;
+import com.tomoon.watch.sample.R;
 
 public class MainActivity extends BaseActivity {
 
@@ -28,33 +29,24 @@ public class MainActivity extends BaseActivity {
 	TestNotificationActivity.class, null, null, null
 
 	};
-	private static String sTestNames[] = new String[] {
 
-	"测试Http",
-
-	"测试App通信",
-
-	"发送Pebble消息", "发送PebbleAck", "发送PebbleNack",
-
-	};
-
-	// 接收pebble消息
+	// receive pebble message from phone
 	private TMWatchReceiver mReceiver = new TMWatchReceiver() {
 		@Override
 		protected void onPebbleData(Context ctx, int status, int transId,
 				String data) {
-			Toast.makeText(ctx, "pebble data " + (data == null ? "" : data),
+			Toast.makeText(ctx, getResources().getString(R.string.t_watch_received_pebble_data) + (data == null ? "" : data),
 					Toast.LENGTH_SHORT).show();
 		}
 
 		@Override
 		protected void onPebbleAck(Context ctx, int status, int transId) {
-			Toast.makeText(ctx, "pebble ack ", Toast.LENGTH_SHORT).show();
+			Toast.makeText(ctx, getResources().getString(R.string.t_watch_received_pebble_ack), Toast.LENGTH_SHORT).show();
 		}
 
 		@Override
 		protected void onPebbleNack(Context ctx, int status, int transId) {
-			Toast.makeText(ctx, "pebble nack", Toast.LENGTH_SHORT).show();
+			Toast.makeText(ctx, getResources().getString(R.string.t_watch_received_pebble_nack), Toast.LENGTH_SHORT).show();
 		}
 	};
 
@@ -76,7 +68,7 @@ public class MainActivity extends BaseActivity {
 					tv.setTextSize(22);
 					tv.setPadding(10, 10, 0, 10);
 				}
-				tv.setText(sTestNames[arg0]);
+				tv.setText(getResources().getStringArray(R.array.watch_test_names)[arg0]);
 				return tv;
 			}
 

@@ -1,5 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="test_app_message">Test App Message</string>
+    <string name="test_http_message">Test Http Message</string>
+    <string name="send_pebble_message">Send Pebble Message</string>
+    <string name="send_pebble_ack">Send Pebble Ack</string>
+    <string name="send_pebble_nack">Send Pebble Nack</string>
+    
+    <string-array name="watch_test_names">
+		<item>Test Http Message</item>
+		<item>Test App Message</item>
+		<item>Send Pebble Message</item>
+		<item>Send Pebble Ack</item>
+		<item>Send Pebble Nack</item>
+    </string-array>
+    
+    <string name="t_watch_received_pebble_data">Watch recieved pebble data </string>
+    <string name="t_watch_received_pebble_ack">Watch recieved pebble ack from Phone</string>
+    <string name="t_watch_received_pebble_nack">Watch recieved pebble nack from Phone</string>
 
+	<string name="http_bad_url">Bad Url: </string>
+	<string name="http_net_err">Network Error</string>
+	<string name="http_unknown_err">Unknown Error</string>
+	<string name="http_failed">Failed!</string>
+	<string name="http_exception">error: </string>
+	<string name="http_test_go">Test!</string>
+	
+	<string name="notification">Notification: </string>
+    <string name="notification_err">Cannot send notification！ Tomoon phone app may not be installed </string>
     
 </resources>

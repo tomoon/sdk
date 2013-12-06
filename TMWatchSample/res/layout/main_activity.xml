@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="do!" />
+        android:text="@string/http_test_go" />
 
     <ScrollView
         android:layout_width="fill_parent"

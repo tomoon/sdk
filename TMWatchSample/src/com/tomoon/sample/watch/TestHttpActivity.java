@@ -52,21 +52,21 @@ public class TestHttpActivity extends BaseActivity implements
 					}
 
 					if (result == TMWatchConstant.STATUS_HTTP_BAD_URL) {
-						tv.setText("地址错误: " + url);
+						tv.setText(getResources().getString(R.string.http_bad_url) + url);
 					} else if (result == TMWatchConstant.STATUS_HTTP_NET_ERR) {
-						tv.setText("网络错误");
+						tv.setText(getResources().getString(R.string.http_net_err));
 					} else if (result != TMWatchConstant.STATUS_OK) {
-						tv.setText("未知错误");
+						tv.setText(getResources().getString(R.string.http_unknown_err));
 					} else { // ok
 						String ret = json.optString("httpRetString", null);
 						if (TextUtils.isEmpty(ret)) {
-							ret = "Failed!";
+							ret = getResources().getString(R.string.http_failed);
 						}
 						tv.setText(ret);
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
-					tv.setText("error: " + e.toString());
+					tv.setText(getResources().getString(R.string.http_exception) + e.toString());
 				}
 			}
 		});

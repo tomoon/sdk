@@ -7,6 +7,6 @@
     <string name="please_download_tomoon_app">please download Tomoon app from tomoon.cn</string>
 	<string name="phone_received_pebble_ack">Phone recieved pebble ack from watch</string>
 	<string name="phone_received_pebble_nack">Phone recieved pebble nack from watch</string>
-	<string name="phone_received_watch_request">Phone recieved watch request!</string>
-
+	<string name="phone_received_watch_request">手机收到手表请求！</string>
+    
 </resources>

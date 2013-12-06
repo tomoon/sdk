@@ -22,21 +22,21 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="test pebble music" />
+        android:text="@string/test_pebble_music" />
 
     <Button
         android:id="@+id/btn_pebble_noti"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="test pebble notify" />
+        android:text="@string/test_pebble_notify" />
 
     <Button
         android:id="@+id/btn_pebble_data"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="test pebble data" />
+        android:text="@string/test_pebble_data" />
     
     <!-- 
 

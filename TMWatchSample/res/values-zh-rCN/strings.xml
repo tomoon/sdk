@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="test_app_message">测试App通信</string>
+    <string name="test_http_message">测试Http通信</string>
+    <string name="send_pebble_message">发送Pebble Message</string>
+    <string name="send_pebble_ack">发送Pebble Ack</string>
+    <string name="send_pebble_nack">发送Pebble Nack</string>
+    
+    <string-array name="watch_test_names">
+		<item>测试Http通信</item>
+		<item>测试App通信</item>
+		<item>发送Pebble Message</item>
+		<item>发送Pebble Ack</item>
+		<item>发送Pebble Nack</item>
+    </string-array>
+    <string name="t_watch_received_pebble_data">Watch recieved pebble data </string>
+    <string name="t_watch_received_pebble_ack">Watch recieved pebble ack from Phone</string>
+    <string name="t_watch_received_pebble_nack">Watch recieved pebble nack from Phone</string>
+
+	<string name="http_bad_url">地址错误: </string>
+	<string name="http_net_err">网络错误</string>
+	<string name="http_unknown_err">未知错误</string>
+	<string name="http_failed">失败!</string>
+	<string name="http_exception">错误: </string>
+	<string name="http_test_go">测试!</string>
+	
+	<string name="notification">通知: </string>
+    <string name="notification_err">无法发送通知！ 手机程序可能未安装 </string>
+    	
+</resources>

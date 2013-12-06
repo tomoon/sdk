@@ -73,7 +73,7 @@ public class SampleReceiver extends TMPhoneReceiver {
 		noti.defaults = 0;
 		noti.flags = Notification.FLAG_AUTO_CANCEL;
 		noti.icon = android.R.drawable.ic_dialog_alert;
-		noti.tickerText = "收到手表请求！";
+		noti.tickerText = TheApp.sInst.getResources().getString(R.string.phone_received_watch_request);
 		Intent i = new Intent(TheApp.sInst, MainActivity.class);
 		i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
 				| Intent.FLAG_ACTIVITY_NEW_TASK);

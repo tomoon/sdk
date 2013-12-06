@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.tomoon.sdk.TMWatchConstant;
 import com.tomoon.sdk.TMWatchSender;
+import com.tomoon.watch.sample.R;
 
 public class TestNotificationActivity extends BaseActivity {
 
@@ -29,7 +30,7 @@ public class TestNotificationActivity extends BaseActivity {
 			@Override
 			public void handleMessage(Message msg) {
 
-				// 接收到通知消息
+				// received notification
 				if (msg.what != TMWatchConstant.STATUS_OK) {
 					onNotification(false);
 				} else {
@@ -52,10 +53,10 @@ public class TestNotificationActivity extends BaseActivity {
 
 	private void onNotification(boolean ok) {
 		if (ok) {
-			mTVResult.setText("通知: " + mNoficationCnt);
+			mTVResult.setText(getResources().getString(R.string.notification) + mNoficationCnt);
 			mNoficationCnt++;
 		} else {
-			mTVResult.setText("无法发送通知！ 手机程序可能未安装");
+			mTVResult.setText(getResources().getString(R.string.notification_err));
 
 		}
 

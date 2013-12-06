@@ -26,7 +26,7 @@ public class SampleReceiver extends TMWatchReceiver {
 			return;
 		}
 
-		// 发回给Activity
+		// send back to Activity
 		if (json == null || mHandler == null) {
 			return;
 		}
