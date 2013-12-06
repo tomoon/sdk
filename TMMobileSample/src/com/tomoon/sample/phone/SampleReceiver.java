@@ -54,6 +54,7 @@ public class SampleReceiver extends TMPhoneReceiver {
 		}
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	protected void onAppRequest(String senderPackage, int transId,
 			JSONObject json) {

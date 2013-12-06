@@ -8,6 +8,7 @@ import java.util.UUID;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -27,9 +28,8 @@ import com.tomoon.sdk.pebble.PebbleKit.PebbleNackReceiver;
 import com.tomoon.watch.utils.TMLog;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
-
-	//public static final boolean isTomoonAppInstalled = false;
 	private TextView mTextView;
+	@SuppressLint("HandlerLeak")
 	private Handler mHandler = new Handler() {
 
 		@Override
@@ -126,12 +126,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 			PebbleDictionary pd = new PebbleDictionary();
 			pd.addString(10, "data");
 			PebbleKit.sendDataToPebble(this, uuid, pd);
-		} else if (R.id.btn_pebble_data == id) {
-
-		} else if (R.id.btn_pebble_data == id) {
-			UUID uuid = UUID.fromString("ee4d768c-84c7-4352-8e4f-eef31194b182");
-
-			PebbleKit.sendNackToPebble(this, -1);
 		}
 	}
 
@@ -148,7 +142,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 	private void sendAlertToPebble() {
 		final Intent i = new Intent("com.getpebble.action.SEND_NOTIFICATION");
 
-		final Map data = new HashMap();
+		final Map<String, String> data = new HashMap<String, String>();
 		data.put("title", "Test Message");
 		data.put("body",
 				"Whoever said nothing was impossible never tried to slam a revolving door.");
