@@ -9,6 +9,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -27,7 +28,7 @@ import com.tomoon.sdk.pebble.PebbleKit.PebbleDataReceiver;
 import com.tomoon.sdk.pebble.PebbleKit.PebbleNackReceiver;
 import com.tomoon.watch.utils.TMLog;
 
-public class MainActivity extends BaseActivity implements View.OnClickListener {
+public class MainActivity extends Activity implements View.OnClickListener {
 	private TextView mTextView;
 	@SuppressLint("HandlerLeak")
 	private Handler mHandler = new Handler() {
@@ -52,8 +53,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
 		setContentView(R.layout.main_activity);
 		mTextView = (TextView) findViewById(R.id.tv_req);
-		//isTomoonAppInstalled = isTomoonAppInstalled();
-		onMessage();
+		if (!isTomoonAppInstalled()) {
+			Toast.makeText(MainActivity.this, "please download Tomoon app from tomoon.cn",
+					Toast.LENGTH_SHORT).show();
+			finish();
+			return;
+		}
 		SampleReceiver.setHandler(mHandler);
 
 		// test sending msg from phone
@@ -61,17 +66,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 		findViewById(R.id.btn_pebble_noti).setOnClickListener(this);
 		findViewById(R.id.btn_pebble_data).setOnClickListener(this);
 
-		// 手机接受手表的pebble信息
 		UUID uuid = UUID.fromString("ee4d768c-84c7-4352-8e4f-eef31194b183");
 		mPebbleAckRecv = new PebbleAckReceiver(uuid) {
 
 			@Override
 			public void receiveAck(Context context, int transactionId) {
-				Toast.makeText(MainActivity.this, "pebble ack",
+				Toast.makeText(MainActivity.this, "ack from watch",
 						Toast.LENGTH_SHORT).show();
 				UUID uuid = UUID
 						.fromString("ee4d768c-84c7-4352-8e4f-eef31194b182");
-				// PebbleKit.sendNackToPebble 不能带uuid
 				TMPhoneSender.sendNackToPebble(context, uuid, transactionId);
 			}
 		};
@@ -83,7 +86,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 						Toast.LENGTH_SHORT).show();
 				UUID uuid = UUID
 						.fromString("ee4d768c-84c7-4352-8e4f-eef31194b182");
-				// PebbleKit.sendAckToPebble 不能带uuid
 				TMPhoneSender.sendAckToPebble(context, uuid, transactionId);
 			}
 		};
@@ -94,7 +96,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 					PebbleDictionary data) {
 				Toast.makeText(
 						MainActivity.this,
-						"pebble data "
+						"data "
 								+ (data == null ? "" : data.toJsonString()),
 						Toast.LENGTH_SHORT).show();
 			}
@@ -129,7 +131,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 		}
 	}
 
-	/////  从pebble网站拷贝的例子
 	private void sendMusicUpdateToPebble() {
 		final Intent i = new Intent("com.getpebble.action.NOW_PLAYING");
 		i.putExtra("artist", "Carly Rae Jepsen");
